@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mssql-data
+  annotations:
+    volume.beta.kubernetes.io/storage-class: {{ .Values.pvc.StorageClass | quote }}
+spec:
+  accessModes:
+  - {{ .Values.pvc.mssqlDataMode | quote}}
+  resources:
+    requests:
+      storage: {{ .Values.pvc.mssqlDataSize}}

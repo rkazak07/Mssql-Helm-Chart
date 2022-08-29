@@ -1,0 +1,95 @@
+#  Default Values mssql'dir. Kendi sisteminize göre revize ediniz.
+
+# Replica Sayımızı buradan oluşturuyoruz. Şu an 1 Replica ile çalışıyor. geliştirme devam etmektedir.
+replicaCount: 1
+
+image:
+  repository: mcr.microsoft.com/mssql/server
+  pullPolicy: IfNotPresent
+  tag: "2019-latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Service account oluşturulup oluşturulmamasını buradan ayarlıyoruz gerekli bilgileri serviceaccount.yaml dosyamıza yazar. Eğer service account ayarlanmadıysa true ise fullname şablonu kullanılarak Serviceaccount oluşturulur.
+  # service account için annotations'ları yazabilirsiniz. 
+  create: true
+  annotations: {}
+  name: ""
+
+ACCEPT_EULA:
+    value: "y"
+MSSQL_PID:
+    value: "Developer"
+MSSQL_AGENT_ENABLED:
+    value: "true"
+hostname: mssql
+sa_password: "123123Aa"
+
+containers:
+  ports:
+      containerPort: 1433
+
+podAnnotations: {}
+
+podSecurityContext:
+   fsGroup: 10001
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 1433  
+
+ingress:
+  enabled: false
+  annotations: 
+     kubernetes.io/ingress.class: nginx
+     kubernetes.io/tls-acme: "true"
+  hosts: 
+  #   - host: mssql.192.168.10.127.nip.io
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+
+  # Kaynakları yapılandırmak için {} ve  yorum satırından kaldırınız.
+  # Önerilen kullanım performansı Açısından önce serbest bırakın daha sonra kaynaklarını belirledikten sonra yapılandırınız.
+  # limits:
+  #   cpu: 100m
+  #   memory: 512Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+
+# hpa ayarlamalarımızı buradan yapabiliriz. Şu an geliştirme devam etmektedir.
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+pvc:
+ StorageClass: "longhorn"
+ mssqlDataMode: ReadWriteOnce
+ mssqlDataSize: 10Gi
