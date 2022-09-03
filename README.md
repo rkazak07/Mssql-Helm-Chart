@@ -22,6 +22,7 @@ A product key
 ```
 kubectl create ns mssql
 ```
+```
 helm upgrade --install mssql . --set ACCEPT_EULA.value=Y --set MSSQL_PID.value=Developer -n mssql
 ```
 
