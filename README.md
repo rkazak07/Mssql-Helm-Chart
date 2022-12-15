@@ -1,4 +1,4 @@
-## To deploy Kubernetes manually;
+## Mssql Helm Chart Deploy
 
 The Values.yaml File contains Deployment and Service. We revise it according to our own system. We give the information of our repo to Containers in Deployment.
 
