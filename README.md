@@ -33,7 +33,7 @@ $ helm delete -n mssql my-release
 
 ## Configuration
 
-The following table lists the configurable parameters of the Couchbase chart and their default values.
+The following table lists the configurable parameters of the mssql chart and their default values.
 
 | Parameter                                      | Description                                                                                                                                           | Default                           |
 |------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
@@ -42,10 +42,10 @@ The following table lists the configurable parameters of the Couchbase chart and
 | `image.pullPolicy`                     | Image pull policy                                                                                                                                     | `IfNotPresent`                    |
 | `replicaCount`                             | The number of mssql instances in the cluster. The chart will automatic create assign master to one of replicaCount                                      | `1`                               |
 | `resources`                            | CPU/Memory resource requests/limits                                                                                                                   | Memory: `4096i`, CPU: `100m`     |
-| `nodeSelector`                         | couchbase server pod assignment                                                                                                                         | `{}`                              |
-| `affinity`                             | couchbase server affinity                                                                                                                               | `{}`                              |
-| `tolerations`                          | couchbase server tolerations                                                                                                                            | `[]`                              |
-| `nodeSelector`                         | couchbase server node selector                                                                                                                          | `{}`                              |
+| `nodeSelector`                         | mssql server pod assignment                                                                                                                         | `{}`                              |
+| `affinity`                             | mssql server affinity                                                                                                                               | `{}`                              |
+| `tolerations`                          | mssql server tolerations                                                                                                                            | `[]`                              |
+| `nodeSelector`                         | mssql server node selector                                                                                                                          | `{}`                              |
 | `podSecurityContext`                   | Set security context for defining privilege and accessing control settings entire Pod                                                                 | `{}`                              |
 | `securityContext`                      | Set security context for defining privilege and accessing control settings for couchbase container                                                      | `privileged: false`               |
 | `service.type`                         | Kubernetes Service type                                                                                                                               | `ClusterIP`                       |
@@ -55,14 +55,14 @@ The following table lists the configurable parameters of the Couchbase chart and
 | `pvc.mssqlDataMode`               | Use volume as ReadOnly or ReadWrite                                                                                                                   | `ReadWriteOnce`                   |
 | `pvc.DataSize`                     | Size of data volume                                                                                                                                   | `50Gi`                            |
 | `ingress.enabled`                      | If true, Couchbase Ingress will be created                                                                                                          |
-| `ingress.port`                         | couchbase Ingress port                                                                                                                                  | `false`                           |
-| `ingress.annotations`                  | couchbase Ingress annotations                                                                                                                           | `{}`                              |
-| `ingress.hosts`                        | couchbase Ingress host names                                                                                                                            | `[]`                              |
-| `ingress.tls`                          | couchbase Ingress TLS configuration (YAML)                                                                                                              | `[]`                              |                                                                     
+| `ingress.port`                         | mssql Ingress port                                                                                                                                  | `false`                           |
+| `ingress.annotations`                  | mssql Ingress annotations                                                                                                                           | `{}`                              |
+| `ingress.hosts`                        | mssql Ingress host names                                                                                                                            | `[]`                              |
+| `ingress.tls`                          | mssql Ingress TLS configuration (YAML)                                                                                                              | `[]`                              |                                                                     
 | `serviceAccount.create`                        | If true, create the Couchbase service account                                                                                                           | `true`                            |
 | `serviceAccount.name`                          | Name of the server service account to use or create                                                                                                   | `{{ fullname }}`          |
 | `serviceAccount.annotations`                   | Service Account annotations                                                                                                                           | `{}`                              |
-| `imagePullSecrets`                             | Configuration for [imagePullSecrets][3] so that you can use a private registry for your images                                                        | `[]`                              |
+| `imagePullSecrets`                             | Configuration for imagePullSecrets so that you can use a private registry for your images                                                        | `[]`                              |
 
 
 
