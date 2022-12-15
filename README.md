@@ -17,13 +17,19 @@ Enterprise
 A product key
 
 
-## Install Command;
+## Quick Installation
 
+```bash
+$ kubectl create ns mssql
 ```
-kubectl create ns mssql
+
+```bash
+$ helm  install my-release . --set ACCEPT_EULA.value=Y --set MSSQL_PID.value=Developer -n mssql
 ```
-```
-helm upgrade --install mssql . --set ACCEPT_EULA.value=Y --set MSSQL_PID.value=Developer -n mssql
+## Delete Chart
+
+```bash
+$ helm delete -n mssql my-release
 ```
 
 
