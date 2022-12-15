@@ -51,9 +51,9 @@ service:
 
 ingress:
   enabled: false
-  annotations: 
-     kubernetes.io/ingress.class: nginx
-     kubernetes.io/tls-acme: "true"
+  annotations: {}
+     # kubernetes.io/ingress.class: nginx
+     # kubernetes.io/tls-acme: "true"
   hosts: 
   #   - host: mssql.192.168.10.127.nip.io
       paths: []
@@ -90,6 +90,6 @@ tolerations: []
 affinity: {}
 
 pvc:
- StorageClass: "longhorn"
+ StorageClass: "-"
  mssqlDataMode: ReadWriteOnce
- mssqlDataSize: 10Gi
+ mssqlDataSize: 50Gi
