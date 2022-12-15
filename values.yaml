@@ -32,7 +32,7 @@ MSSQL_PID:
 MSSQL_AGENT_ENABLED:
     value: "true"
 hostname: mssql
-sa_password: "123123Aa"
+sa_password: "changepassword"
 
 containers:
   ports:
